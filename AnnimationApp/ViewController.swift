@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SpringAnimation
 
 class ViewController: UIViewController {
 
     @IBOutlet var coreAnimationView: UIView!
+    @IBOutlet var springAnimationView: SpringView!
     
     private var animationStarts = false
     
@@ -28,5 +30,19 @@ class ViewController: UIViewController {
                                      
                                  }
     }
+    
+    
+    @IBAction func startSpringAnimation(_ sender: SpringButton) {
+        springAnimationView.animation = "wobble"
+        springAnimationView.curve = "easyInOutSine"
+        springAnimationView.force = 2
+        springAnimationView.duration = 1
+        springAnimationView.delay = 1
+        springAnimationView.animate()
+        
+        sender.animation = "swing"
+        sender.animate()
+    }
+    
 }
 
